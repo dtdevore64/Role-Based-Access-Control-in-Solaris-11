@@ -49,6 +49,7 @@ And as you can see he does not have access to reboot
 ```
   profiles -a | less
 ```
+<br><br>
 
 Scroll down until you fine ```Maintenance and Repair``` then run the following command:
 
@@ -111,6 +112,134 @@ As you can see it has the ```reboot``` command among other commands that are gro
 ```
 
 <br><br><br>
+
+
+***Step 6.*** Create our new role that can only reboot the machine. Run the following commands:
+```
+   roleadd -m -s /bin/bash reboot_r
+```
+
+To see where it created our new role at run the following command:
+
+```
+   grep reboot_r /etc/passwd
+   reboot_r:x:103:10::/export/home/reboot_r:/usr/bin/bash
+```
+   
+<br><br><br>
+   
+   
+***Step 7.*** We just want our new role to be able to run the ```reboot``` command and nothing else so we will not add the ```Maintenance and Repair``` profile to our new role and user ```bob```. Instead we will create a new profile and assign only the ```reboot``` command to it. If you want to see a list of all the system defined profiles then run the following command:
+
+```
+   less /etc/security/prof_attr.d/core-os
+```
+<br><br>
+
+
+Instead of editing or adding to the already defined system profiles in the ```/etc/security/prof_attr.d``` directory we will add our local profile into the ```/etc/security/prof_attr``` file like so(all new profiles should be written to this file).
+
+```
+   nano /etc/security/prof_attr
+   
+   #
+   # The system provided entires are stored in different files
+   #under "/etc/security/prof_attr.d". They should not be
+   # copied to this file
+   #
+   # Only local changes should be stored in this file.
+   # This line should be kept in this file or it will be
+   overwritten.
+   #
+   
+   Reboot:RO::\
+   For authorized users to reboot the system:\
+```
+
+We can tell from this file that our profile name ie ```Reboot``` and the ```RO(read-only)``` characters tell us that it is not modifiable by any tool that changes this database.
+
+<br><br><br>
+
+
+***Step 8.*** Since the profile is created we have to assign one or more commands to this profile and we will start by editing the ```/etc/security/exec_attr``` file:
+
+```
+   nano /etc/security/exec_attr
+   
+   #
+   # The system provided entires are stored in different files
+   # under "/etc/security/exec_attr.d". They should not be
+   # copied to this file.
+   #
+   # Only local changes should be stored in this file.
+   # This line should be kept in this file or it will be
+   overwritten.
+   #
+   Reboot:solaris:cmd:RO::/usr/sbin/reboot:uid=0
+```
+
+Explanation of the last line:
+
+reboot = profile name
+solaris = security policy associated with reboot profile
+cmd = type of object; command to be executed by a shell
+RO = line is not modifiable by any tool that changes this file
+/usr/sbin/reboot = command to be executed by a user when they assume the role that contains reboot profile
+Uid=0 = user runs the command and the command will be executed to run by a root user
+
+<br><br><br>
+
+
+***Step 9.*** Map the ```Reboot``` profile to the ```reboot_r``` role
+
+```
+   rolemod -P Reboot reboot_r
+```
+<br><br>
+
+
+If we run the following commands we can see that our new role did indeed map to our new profile
+
+```
+   more /etc/user_attr
+   
+   #
+   # Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
+   #
+   # The system provided entires are stored in different files
+   # under "/etc/user_attr.d". They should not be copied to this file.
+   #
+   # Only local changes should be stored in this file.
+   #
+   root::::type=role
+   joe::::lock_after_retires=no;roles=root;clearance=ADMIN_HIGH;min_label=ADMIN_LOW
+   ;auth_profiles=System Adminstrator
+   bob::::roles=root
+   reboot_r::::profiles=Reboot;type=role;roleauth=role
+```
+
+<br><br><br>
+
+
+***Step 10.*** Set a new password for our new ```reboot_r```
+
+```
+   passwd reboot_r
+```
+
+
+   
+
+
+   
+   
+
+
+
+
+
+
+
 
   
 
