@@ -32,7 +32,7 @@ In this example I will create a new user and create a new role that can only shu
 <br><br><br>
 
 
-***Step 4.*** See if our user bob can run the ```reboot``` command just to make sure that he doesn't have access to it already
+***Step 4.*** Exit root and let's see if our user bob can run the ```reboot``` command just to make sure that he doesn't have access to it already
 
 ```
   reboot
