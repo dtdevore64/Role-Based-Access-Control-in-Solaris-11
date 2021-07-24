@@ -3,6 +3,7 @@
 <br><br>
 
 What is RBAC(Role Based Access Control)? RBAC provides a more secure alternative to the all-or-nothing superuser model. With RBAC, you can enforce security policy at a more fine-grained level. RBAC uses the security principle of least privilege. Least privilege means that a user has precisely the amount of privilege that is necessary to perform a job. Regular users have enough privilege to use their applications, check the status of their jobs, print files, create new files, and so on. Capabilities beyond regular user capabilities are grouped into rights profiles. Users who are expected to do jobs that require some of the capabilities of superuser assume a role that includes the appropriate rights profile.
+<br>
 
 In this example I will create a new user and create a new role that can only shutdown the machine and that is the only privilege they will have
 <br><br>
