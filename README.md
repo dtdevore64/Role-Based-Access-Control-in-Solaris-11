@@ -183,12 +183,17 @@ We can tell from this file that our profile name ie ```Reboot``` and the ```RO(r
 ```
 
 Explanation of the last line:
-
+<br>
 reboot = profile name
+<br>
 solaris = security policy associated with reboot profile
+<br>
 cmd = type of object; command to be executed by a shell
+<br>
 RO = line is not modifiable by any tool that changes this file
+<br>
 /usr/sbin/reboot = command to be executed by a user when they assume the role that contains reboot profile
+<br>
 Uid=0 = user runs the command and the command will be executed to run by a root user
 
 <br><br><br>
