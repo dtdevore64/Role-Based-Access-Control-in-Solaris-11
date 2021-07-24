@@ -116,7 +116,7 @@ As you can see it has the ```reboot``` command among other commands that are gro
 
 ***Step 6.*** Create our new role that can only reboot the machine. Run the following commands:
 ```
-   roleadd -m -s /bin/bash reboot_r
+   roleadd -m -s /bin/pfbash reboot_r
 ```
 
 <br><br>
