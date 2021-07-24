@@ -119,6 +119,8 @@ As you can see it has the ```reboot``` command among other commands that are gro
    roleadd -m -s /bin/bash reboot_r
 ```
 
+<br><br>
+
 To see where it created our new role at run the following command:
 
 ```
@@ -226,6 +228,55 @@ If we run the following commands we can see that our new role did indeed map to 
 ```
    passwd reboot_r
 ```
+<br><br><br>
+
+
+***Step 11.*** Assign the ```reboot_r``` role to our user ```bob```
+
+```
+   usermod -R reboot_r bob
+```
+
+Run the following to verify that ```bob``` has the ```reboot_r``` role assigned to him
+
+```
+   more /etc/user_attr
+   
+   #
+   # Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
+   #
+   # The system provided entires are stored in different files
+   # under "/etc/user_attr.d". They should not be copied to this file.
+   #
+   # Only local changes should be stored in this file.
+   #
+   root::::type=role
+   joe::::lock_after_retires=no;roles=root;clearance=ADMIN_HIGH;min_label=ADMIN_LOW
+   ;auth_profiles=System Adminstrator
+   bob::::roles=reboot_r
+   reboot_r::::profiles=Reboot;type=role;roleauth=role
+```
+
+<br><br><br>
+
+
+***Step 12.*** Log in as Bob and try to run the command ```reboot```
+
+```
+   reboot
+   reboot: permission denied
+```
+
+
+It denied the permission because you have to transition to the ```reboot_r``` role like so:
+
+```
+   su - reboot_r
+   Password:
+   reboot_r@solaris:~$ reboot
+```
+   
+
 
 
    
