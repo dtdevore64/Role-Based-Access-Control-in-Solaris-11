@@ -1,4 +1,4 @@
-**# RBAC-in-Solaris-11**
+***# RBAC-in-Solaris-11***
 
 <br><br>
 
@@ -10,7 +10,7 @@ In this example I will create a new user and create a new role that can only shu
 
 ***Step 1.*** Log into Solaris 11 and log into the root role.
 
-<br><br><br>
+<br><br>
 
 
 ***Step 2.*** Create a new user named ```bob``` and create a password for ```bob```
