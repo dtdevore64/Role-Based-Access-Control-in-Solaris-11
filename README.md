@@ -205,33 +205,11 @@ Explanation of the last line:
 ```
    rolemod -P Reboot reboot_r
 ```
-<br><br>
-
-
-If we run the following commands we can see that our new role did indeed map to our new profile
-
-```
-   more /etc/user_attr
-   
-   #
-   # Copyright (c) 1999, 2013, Oracle and/or its affiliates. All rights reserved.
-   #
-   # The system provided entires are stored in different files
-   # under "/etc/user_attr.d". They should not be copied to this file.
-   #
-   # Only local changes should be stored in this file.
-   #
-   root::::type=role
-   joe::::lock_after_retires=no;roles=root;clearance=ADMIN_HIGH;min_label=ADMIN_LOW
-   ;auth_profiles=System Adminstrator
-   bob::::roles=root
-   reboot_r::::profiles=Reboot;type=role;roleauth=role
-```
-
 <br><br><br>
 
 
-***Step 10.*** Set a new password for our new ```reboot_r```
+
+***Step 10.*** Set a new password for our new ```reboot_r``` role
 
 ```
    passwd reboot_r
@@ -244,6 +222,7 @@ If we run the following commands we can see that our new role did indeed map to 
 ```
    usermod -R reboot_r bob
 ```
+<br><br>
 
 Run the following to verify that ```bob``` has the ```reboot_r``` role assigned to him
 
