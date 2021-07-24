@@ -88,6 +88,7 @@ Scroll down until you fine ```Maintenance and Repair``` then run the following c
 ```
 
 As you can see it has the ```reboot``` command among other commands that are grouped together in the profile ```Maintenance and Repair```. You can also run this command to see where the exact profile is located:
+<br><br>
 
 ```
 
