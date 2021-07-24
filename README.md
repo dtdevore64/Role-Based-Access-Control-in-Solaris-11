@@ -183,7 +183,8 @@ We can tell from this file that our profile name ie ```Reboot``` and the ```RO(r
 ```
 
 Explanation of the last line:
-<br>
+<br><br>
+
 reboot = profile name
 <br>
 solaris = security policy associated with reboot profile
