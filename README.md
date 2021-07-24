@@ -254,6 +254,8 @@ Run the following to verify that ```bob``` has the ```reboot_r``` role assigned 
    reboot: permission denied
 ```
 
+<br><br>
+
 
 It denied the permission because you have to transition to the ```reboot_r``` role like so:
 
@@ -262,6 +264,8 @@ It denied the permission because you have to transition to the ```reboot_r``` ro
    Password:
    reboot_r@solaris:~$ reboot
 ```
+<br>
+As you can see it rebooted the machine just fine and everything works with no issues.
    
 
 
