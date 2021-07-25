@@ -32,19 +32,8 @@ In this example I will create a new user and create a new role that can only shu
 <br><br><br>
 
 
-***Step 4.*** Exit root and let's see if our user bob can run the ```reboot``` command just to make sure that he doesn't have access to it already
 
-```
-  reboot
-  reboot: permission denied
-```
-
-And as you can see he does not have access to reboot
-
-<br><br><br>
-
-
-***Step 5.*** Let's look at what Profiles the reboot command is under. Profiles in Solaris 11 RBAC allow authorizations and privileged commands to be grouped together and can be assigned to users or to roles.
+***Step 4.*** Let's look at what Profiles the reboot command is under. Profiles in Solaris 11 RBAC allow authorizations and privileged commands to be grouped together and can be assigned to users or to roles.
 
 ```
   profiles -a | less
@@ -114,7 +103,7 @@ As you can see it has the ```reboot``` command among other commands that are gro
 <br><br><br>
 
 
-***Step 6.*** Create our new role that can only reboot the machine. Run the following commands:
+***Step 5.*** Create our new role that can only reboot the machine. Run the following commands:
 ```
    roleadd -m -s /bin/pfbash reboot_r
 ```
@@ -131,7 +120,7 @@ To see where it created our new role at run the following command:
 <br><br><br>
    
    
-***Step 7.*** We just want our new role to be able to run the ```reboot``` command and nothing else so we will not add the ```Maintenance and Repair``` profile to our new role and user ```bob```. Instead we will create a new profile and assign only the ```reboot``` command to it. If you want to see a list of all the system defined profiles then run the following command:
+***Step 6.*** We just want our new role to be able to run the ```reboot``` command and nothing else so we will not add the ```Maintenance and Repair``` profile to our new role and user ```bob```. Instead we will create a new profile and assign only the ```reboot``` command to it. If you want to see a list of all the system defined profiles then run the following command:
 
 ```
    less /etc/security/prof_attr.d/core-os
@@ -163,7 +152,7 @@ We can tell from this file that our profile name ie ```Reboot``` and the ```RO(r
 <br><br><br>
 
 
-***Step 8.*** Since the profile is created we have to assign one or more commands to this profile and we will start by editing the ```/etc/security/exec_attr``` file:
+***Step 7.*** Since the profile is created we have to assign one or more commands to this profile and we will start by editing the ```/etc/security/exec_attr``` file:
 
 ```
    nano /etc/security/exec_attr
@@ -198,7 +187,7 @@ Explanation of the last line:
 <br><br><br>
 
 
-***Step 9.*** Map the ```Reboot``` profile to the ```reboot_r``` role
+***Step 8.*** Map the ```Reboot``` profile to the ```reboot_r``` role
 
 ```
    rolemod -P Reboot reboot_r
@@ -207,7 +196,7 @@ Explanation of the last line:
 
 
 
-***Step 10.*** Set a new password for our new ```reboot_r``` role
+***Step 9.*** Set a new password for our new ```reboot_r``` role
 
 ```
    passwd reboot_r
@@ -215,7 +204,7 @@ Explanation of the last line:
 <br><br><br>
 
 
-***Step 11.*** Assign the ```reboot_r``` role to our user ```bob```
+***Step 10.*** Assign the ```reboot_r``` role to our user ```bob```
 
 ```
    usermod -R reboot_r bob
@@ -245,7 +234,7 @@ Run the following to verify that ```bob``` has the ```reboot_r``` role assigned 
 <br><br><br>
 
 
-***Step 12.*** Log in as Bob and try to run the command ```reboot```
+***Step 11.*** Log in as Bob and try to run the command ```reboot```
 
 ```
    reboot
