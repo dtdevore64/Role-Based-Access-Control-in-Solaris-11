@@ -107,6 +107,8 @@ As you can see it has the ```reboot``` command among other commands that are gro
 ```
    roleadd -m -s /bin/pfbash reboot_r
 ```
+<br>
+Notice the shell (/bin/pfbash). This shell enables a user to execute a command in a profile
 
 <br><br>
 
