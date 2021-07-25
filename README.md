@@ -58,10 +58,8 @@ Scroll down until you fine ```Maintenance and Repair``` then run the following c
   
   name=Maintenance and Repair 
   desc=Maintain and repair a system 
-  auths=sol aris. admin. edi t/ etc/ no login, sol aris. admin. edi t/ etc/ sys log. conf , 
-  sol aris. label . range, sol aris. smf . manage. coreadm, sol aris. smf . manage. system—log, sol 
-  aris. smf . val ue. coreadm, sol aris. smf . val ue. power _ conf i g, sol aris. smf . val ue. power_co 
-  ntrol , sol aris. system. maintenance 
+  auths=solaris.admin.edit/etc/nologin,solaris.admin.edit/etc/syslog.conf, 
+  solaris.label.range,solaris.smf.manage.coreadm,solaris.smf.manage.system—log, solaris.smf.value.coreadm,solaris.smf.value.power_config,solaris.smf.value.power_control,solaris.system.maintenance 
   profiles=Hotplug Management, Service Configuration 
   cmd=/usr/sbin/ubiosconfig 
   cmd=/usr/sbin/biosconfig 
@@ -93,7 +91,7 @@ As you can see it has the ```reboot``` command among other commands that are gro
 
 ```
 
-  cat / etc/ security/exec_attr.d/core—os | grep —i "Maintenance and Repair
+  cat /etc/security/exec_attr.d/core—os | grep —i "Maintenance and Repair
   
   Maintenance and Repair:solaris:cmd:RO::/usr/bin/mdb:privs—all 
   Maintenance and Repair:solaris:cmd:RO::/usr/bin/coreadm:eui;privs=proc_owner 
