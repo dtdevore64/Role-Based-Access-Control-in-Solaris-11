@@ -103,12 +103,10 @@ As you can see it has the ```reboot``` command among other commands that are gro
 <br><br><br>
 
 
-***Step 5.*** Create our new role that can only reboot the machine. Run the following commands:
+***Step 5.*** Create our new role that can only reboot the machine. You will notice the shell (/bin/pfbash). This shell enables a user to execute a command in a profile.
 ```
    roleadd -m -s /bin/pfbash reboot_r
 ```
-<br>
-Notice the shell (/bin/pfbash). This shell enables a user to execute a command in a profile
 
 <br><br>
 
