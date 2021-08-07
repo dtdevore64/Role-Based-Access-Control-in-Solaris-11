@@ -1,4 +1,4 @@
-# **RBAC-in-Solaris-11**
+# **Role Based Access Control in Solaris 11**
 
 <br><br>
 
