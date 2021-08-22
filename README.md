@@ -14,7 +14,7 @@ In this example I will create a new user and create a new role that can only shu
 <br><br>
 
 
-***Step 2.*** Create a new user named ```bob``` and create a password for ```bob```
+***Step 2.*** Create a new user named ```bob``` and create a password
 
 ```
    useradd -m bob
